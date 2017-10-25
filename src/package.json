@@ -8,6 +8,8 @@
   },
   "author": "Tyler Shaddix",
   "dependencies": {
+    "classnames": "^2.2.5",
+    "lodash": "^4.17.4",
     "react": "^15.5.0",
     "react-chrome-redux": "0.0.7",
     "react-dom": "^15.5.0",

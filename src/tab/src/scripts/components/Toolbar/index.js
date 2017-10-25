@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import ColorPicker from 'components/ColorPicker'
+import ColorPicker from '../ColorPicker'
 
 const Bar = styled.div`
   display: absolute;
@@ -19,10 +19,7 @@ class Toolbar extends Component {
     return (
       <Bar>
         <div>
-          <ColorPicker color="black" onClick={this.props.onClick}/>
-          <ColorPicker color="red" onClick={this.props.onClick}/>
-          <ColorPicker color="green" onClick={this.props.onClick}/>
-          <ColorPicker color="blue" onClick={this.props.onClick}/>
+          <ColorPicker onClick={this.props.onClick}/>
         </div>
       </Bar>
     );

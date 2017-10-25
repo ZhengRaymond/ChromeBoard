@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
-import Toolbar from 'components/Toolbar'
+import Toolbar from '../Toolbar'
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +19,6 @@ const Editor = styled.textarea`
 
   line-height: 1.2em;
   padding: 20px;
-  caret-color: rgb(0, 150, 255);
 
   &:focus {
     outline: 0;
@@ -30,27 +29,28 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: "black"
+      text: `<span color="black">Hello: $\\alpha$`
     }
     this.changeColor = this.changeColor.bind(this);
   }
 
   changeColor(color) {
     this.setState({
-      ...this.state,
-      color
+      text: `${this.state.text}</span><span color=${color}>`
     })
   }
 
   render() {
-    var text = "Hello: $\\alpha$"
+    var text = ""
     return (
-      <Container>
-        {this.color}
-        <Editor autoFocus={true} styled={{}}>
-          {text}
-        </Editor>
-      </Container>
+      <div>
+        <Toolbar onClick={this.changeColor}/>
+        <Container>
+          <Editor autoFocus={true} style={{"caretColor": this.state.color, "color": this.state.color}}>
+            {this.state.text }
+          </Editor>
+        </Container>
+      </div>
     );
   }
 }
