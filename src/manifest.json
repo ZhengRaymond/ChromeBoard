@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "ChromeBoard",
+  "description": "Persistent rich-text whiteboard with math replacing Chrome's New Tab page.",
+  "version": "0.0.0.1",
+  "background": {
+    "scripts": [
+      "event.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_title": "New Tab",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "css": [],
+      "js": ["content.js"]
+    }
+  ],
+  "chrome_url_overrides" : {
+    "newtab": "tab.html"
+  }
+}
