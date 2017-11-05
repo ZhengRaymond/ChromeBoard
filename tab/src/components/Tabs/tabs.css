@@ -1,0 +1,184 @@
+body{
+  background : #efefef;
+  font : .8em sans-serif;
+  margin: 0;
+}
+
+.tab-container {
+  display: flex;
+  background : #2BA6CB;
+  margin: 0;
+  padding: 0;
+  height: 35px;
+}
+
+ul.tabs{
+  flex: 1;
+  display: flex;
+  margin: 0;
+  list-style-type: none;
+  line-height : 35px;
+  max-height: 35px;
+  overflow: hidden;
+  padding-right: 20px
+}
+
+ul.tabs > li.active{
+  z-index: 2;
+  background: #efefef;
+}
+
+ul.tabs > li.active:before{
+  border-color : transparent #efefef transparent transparent;
+}
+
+
+ul.tabs > li.active:after{
+  border-color : transparent transparent transparent #efefef;
+}
+
+ul.tabs > li {
+  flex: 1;
+  float : right;
+  margin : 5px -10px 0;
+  border-top-right-radius: 25px 170px;
+  border-top-left-radius: 20px 90px;
+  padding : 0 30px 0 25px;
+  height: 170px;
+  background: #ddd;
+  position : relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,.5);
+  max-width : 170px;
+}
+
+ul.tabs > li > span {
+  display: inline-block;
+  overflow: hidden;
+  max-width: 80%;
+  text-decoration: none;
+  color: #222;
+}
+
+ul.tabs > li:before, ul.tabs > li:after{
+  content : '';
+  background : transparent;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border-width: 10px;
+  top: 0px;
+  border-style : solid;
+  position : absolute;
+}
+
+ul.tabs > li:before{
+  border-color : transparent #ddd transparent transparent;
+  -webkit-transform : rotate(48deg);
+  left: -23px;
+}
+
+ul.tabs > li:after{
+  border-color : transparent transparent transparent #ddd;
+  -webkit-transform : rotate(-48deg);
+  right: -17px;
+}
+
+/* Clear Fix took for HTML 5 Boilerlate*/
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+/*
+.bar {
+  width: 100vw;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: #2BA6CB;
+}
+
+.tab {
+  display: flex;
+  max-width: 200px;
+  flex: 1;
+  line-height: 35px;
+  padding-left: 10px;
+  text-align: left;
+  background: transparent;
+  border-bottom: 30px solid #ddd;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  margin-right: -15px;
+}
+
+.tab:focus {
+  z-index: 1;
+  outline: none;
+  border-bottom: 30px solid #fff;
+}
+
+.tab-title {
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+*/
+
+.add-tab-button {
+  float: right;
+  align-self: center;
+  width: 20px;
+  height: 20px;
+  font-size: 13px;
+  padding: 2px 6px 3px 3px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+.add-tab-button:focus {
+  outline: none;
+}
+
+.add-tab-button.disabled {
+  color: #888;
+  width: 5px;
+  height: 5px;
+  font-size: 0px;
+}
+
+.add-tab-button-container {
+  background-color: transparent;
+  margin: auto 8px;
+}
+
+.add-tab-button-container:hover > .add-tab-button.active {
+  transform: rotateZ(180deg);
+  transition: 0.3s ease;
+}
+
+.close-tab-button:focus {
+  outline: none;
+}
+
+.close-tab-button {
+  position: absolute;
+  right: 30px;
+  font-size: 20px;
+  margin-left: auto;
+  margin-top: 2px;
+  font-family: monospace;
+  align-self: center;
+  z-index: 2;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 15px;
+}
+
+.close-tab-button:hover {
+  background-color: #bbb;
+}
