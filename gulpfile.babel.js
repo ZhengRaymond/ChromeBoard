@@ -73,6 +73,11 @@ gulp.task('copy-lib', ['clean'], () => {
     .pipe(gulp.dest('./build'));
 });
 
+gulp.task('copy-megadraft-css', ['clean'], () => {
+  return gulp.src('node_modules/megadraft/dist/css/megadraft.css')
+    .pipe(gulp.dest('./build'));
+});
+
 // gulp.task('copy-css', ['clean'], () => {
 //   return gulp.src('css/**/*')
 //     .pipe(gulp.dest('./build'));
@@ -82,7 +87,7 @@ gulp.task('clean', (cb) => {
   rimraf('./build', cb);
 });
 
-gulp.task('build', ['copy-manifest', 'tab-js', 'tab-html', 'copy-lib']);
+gulp.task('build', ['copy-manifest', 'tab-js', 'tab-html', 'copy-lib', 'copy-megadraft-css']);
 // gulp.task('build', ['copy-manifest', 'tab-js', 'tab-html', 'copy-lib', 'copy-css']);
 // gulp.task('build', ['copy-manifest', 'popup-js', 'popup-html', 'event-js', 'content-js', 'tab-js', 'tab-html', 'copy-lib', 'copy-css']);
 

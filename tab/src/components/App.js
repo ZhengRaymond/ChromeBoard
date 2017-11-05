@@ -5,6 +5,7 @@ import SplitPane from 'react-split-pane';
 import Toolbar from './Toolbar';
 import Navigator from './Navigator';
 import TeXEditor from './TeXEditor';
+import TeXEditor2 from './TeXEditor2';
 import Tabs from './Tabs';
 
 class App extends Component {
@@ -48,8 +49,7 @@ class App extends Component {
           <div>
             <SplitPane split="vertical" defaultSize={200}>
                 <Navigator />
-
-                <TeXEditor />
+                <TeXEditor2 />
             </SplitPane>
           </div>
       </div>
