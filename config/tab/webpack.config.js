@@ -30,8 +30,6 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
-        include: path.join(__dirname, '../../tab/src'),
         use: [
           'style-loader',
           {

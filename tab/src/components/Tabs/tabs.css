@@ -172,7 +172,7 @@ ul.tabs > li:after{
   margin-top: 2px;
   font-family: monospace;
   align-self: center;
-  z-index: 2;
+  z-index: 3;
 
   background-color: transparent;
   border: none;

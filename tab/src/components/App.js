@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import "./app.css";
+import localforage from 'localforage';
 
 import SplitPane from 'react-split-pane';
-import Toolbar from './Toolbar';
 import Navigator from './Navigator';
 import TeXEditor from './TeXEditor';
 import Tabs from './Tabs';
@@ -10,48 +10,36 @@ import Tabs from './Tabs';
 class App extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
-      tabs: [
-        { name: "Tab1" },
-        { name: "Tab2 WITH A VERY VERY VERY VERY LONG NAME THAT GOES ON FOR PAGES" },
-        { name: "Tab3" },
-        { name: "Tab4" }
-      ]
+      currentTab: null
     }
-    this.addTab = this.addTab.bind(this);
-    this.removeTab = this.removeTab.bind(this);
-    this.selectTab = this.selectTab.bind(this);
+    this.switchTabFn = this.switchTabFn.bind(this);
   }
 
-  addTab() {
-    var tabs = this.state.tabs.slice();
-    const index = tabs.length + 1;
-    tabs.push({ name: `Tab${index}` });
-    this.setState({ ...this.state, tabs });
-  }
-
-  removeTab(index) {
-    var tabs = this.state.tabs.slice();
-    tabs.splice(index, 1);
-    this.setState({ ...this.state, tabs });
-  }
-
-  selectTab(index) {
-    console.log(`Selected tab #${index}`);
+  switchTabFn(tab) {
+    console.log("Editor switching to tab:", tab);
   }
 
   render() {
     return (
-      <div className="flex-vertical">
-          <Tabs tabs={this.state.tabs} onAdd={this.addTab} onSelect={this.selectTab} onRemove={this.removeTab} />
-          <div>
-            <SplitPane split="vertical" defaultSize={200}>
-                <Navigator />
-
-                <TeXEditor />
-            </SplitPane>
-          </div>
+      <div>
+        <button onClick={() => localforage.keys().then((value) => console.log("forager:", value))}>View LocalForage Keys</button>
+        <button onClick={() => {
+          var fn = (key) => localforage.getItem(key).then((data) => console.log(key, data));
+          fn('initialized');
+          fn('tabs');
+        }}>Get LocalForage State</button>
+        <button onClick={() => localforage.setItem('initialized', false)} style={{color: "red"}}>RESET LocalForage</button>
+        <button onClick={() => localforage.clear()} style={{color: "red"}}>DELETE LOCALFORAGE</button>
+        <div className="flex-vertical">
+            <Tabs switchTabFn={this.switchTabFn} />
+            <div>
+              <SplitPane split="vertical" defaultSize={200}>
+                  <Navigator />
+                  <TeXEditor />
+              </SplitPane>
+            </div>
+        </div>
       </div>
     )
   }
